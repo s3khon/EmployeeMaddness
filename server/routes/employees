@@ -1,0 +1,79 @@
+const express = require("express");
+const router = express.Router();
+const EmployeeModel = require("../db/employee.model");
+
+// ROUTER FOR /api/employees
+
+router
+  .route("/")
+  .get(async (req, res) => {
+    const sortOrder = req.query.sort;
+    const levelFilter = req.query.levelFilter;
+    const positionFilter = req.query.positionFilter;
+
+    const regExpLevel = new RegExp(`${levelFilter}`, `i`);
+    const regExpPosition = new RegExp(`${positionFilter}`, `i`);
+
+    const filterQuery = {
+      level: regExpLevel,
+      position: regExpPosition,
+    };
+
+    let employees;
+    if (sortOrder === "none") {
+      employees = await EmployeeModel.find(filterQuery).sort({
+        created: "desc",
+      });
+    } else if (sortOrder === "asc") {
+      employees = await EmployeeModel.find(filterQuery).sort({ name: "asc" });
+    } else {
+      employees = await EmployeeModel.find(filterQuery).sort({ name: "desc" });
+    }
+    return res.json(employees);
+  })
+  .post(async (req, res, next) => {
+    const employee = req.body;
+    try {
+      const savedEmployee = await EmployeeModel.create(employee);
+      return res.json(savedEmployee);
+    } catch (err) {
+      return next(err);
+    }
+  });
+
+router
+  .route("/:id")
+  .all(async (req, res, next) => {
+    let employee = null;
+    try {
+      employee = await EmployeeModel.findById(req.params.id);
+    } catch (err) {
+      return next(err);
+    }
+    if (!employee) {
+      return res.status(404).end("Employee not found");
+    } else {
+      req.employee = employee;
+      next();
+    }
+  })
+  .get(async (req, res) => {
+    return res.json(req.employee);
+  })
+  .patch(async (req, res) => {
+    updatedEmployee = await EmployeeModel.findOneAndUpdate(
+      { _id: req.params.id },
+      req.body,
+      { new: true }
+    );
+
+    return res.json(updatedEmployee);
+  })
+  .delete(async (req, res) => {
+    const deletedEmployee = await EmployeeModel.findOneAndDelete({
+      _id: req.params.id,
+    });
+    return res.json(deletedEmployee);
+  });
+
+module.exports = router;

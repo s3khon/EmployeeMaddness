@@ -1,0 +1,40 @@
+.Layout nav ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: rgb(76, 117, 219);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.create-button {
+  padding: 0.7rem 1.7rem;
+  font-weight: bold;
+}
+
+.Layout nav button:hover {
+  box-shadow: 0px 0px 5px rgb(255, 255, 255);
+}
+
+.page-button {
+  color: white;
+  font-size: 1.4rem;
+  font-weight: bold;
+  background-color: rgb(99, 151, 254);
+  border: 1px solid white;
+  border-radius: 5%;
+  margin-right: 50px;  
+  padding: 0px;
+  height: 40px;  
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+}
+
+.page-button:hover {
+  background-color: rgb(219, 230, 255);
+  color: rgb(76, 117, 219);
+}

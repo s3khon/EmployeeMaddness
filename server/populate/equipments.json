@@ -1,0 +1,102 @@
+[
+    {
+       "name": "desk", 
+       "type": "TB-150", 
+       "amount": 20
+    }, 
+    {
+        "name": "chair", 
+        "type": "XB-120", 
+        "amount": 25
+    }, 
+    {
+        "name": "notebook", 
+        "type": "Lenovo IdeaPad 3", 
+        "amount": 20
+    },
+    {
+        "name": "monitor", 
+        "type": "Philips Monito V-Line", 
+        "amount": 20
+    },
+    {
+        "name": "coffee machine", 
+        "type": "Philips EP2231/40", 
+        "amount": 2
+    }, 
+    {
+        "name": "Javascript Book", 
+        "type": "Tutorial", 
+        "amount": 2
+    }, 
+    {
+        "name": "HTML Book", 
+        "type": "Tutorial", 
+        "amount": 4
+    }, 
+    {
+        "name": "CSS Book", 
+        "type": "Tutorial", 
+        "amount": 1
+    }, 
+    {
+        "name": "React Book", 
+        "type": "Tutorial", 
+        "amount": 5
+    }, 
+    {
+        "name": "Express Book", 
+        "type": "Tutorial", 
+        "amount": 2
+    }, 
+    {
+        "name": "Nodejs Book", 
+        "type": "Tutorial", 
+        "amount": 7
+    }, 
+    {
+        "name": "C# Book", 
+        "type": "Tutorial", 
+        "amount": 1
+    }, 
+    {
+        "name": "C++ Book", 
+        "type": "Tutorial", 
+        "amount": 5
+    }, 
+    {
+        "name": "Python Book", 
+        "type": "Tutorial", 
+        "amount": 2
+    }, 
+    {
+        "name": "F# Book", 
+        "type": "Tutorial", 
+        "amount": 7
+    }, 
+    {
+        "name": "C Book", 
+        "type": "Tutorial", 
+        "amount": 7
+    }, 
+    {
+        "name": "Linux Book", 
+        "type": "Tutorial", 
+        "amount": 1
+    }, 
+    {
+        "name": "Git Book", 
+        "type": "Tutorial", 
+        "amount": 5
+    }, 
+    {
+        "name": "Postman Book", 
+        "type": "Tutorial", 
+        "amount": 2
+    }, 
+    {
+        "name": "MERN Book", 
+        "type": "Tutorial", 
+        "amount": 7
+    }
+]

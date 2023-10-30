@@ -1,0 +1,65 @@
+const express = require("express");
+const router = express.Router();
+const EquipmentModel = require("../db/equipment.model");
+
+// ROUTER FOR /api/equipments
+
+router
+  .route("/")
+  .get(async (req, res) => {
+    const equipments = await EquipmentModel.find().sort({ created: "desc" });
+    return res.json(equipments);
+  })
+  .post(async (req, res, next) => {
+    const equipment = req.body;
+    try {
+      const savedEquipment = await EquipmentModel.create(equipment);
+      return res.json(savedEquipment);
+    } catch (err) {
+      return next(err);
+    }
+  });
+
+router
+  .route("/:id")
+  .all(async (req, res, next) => {
+    let equipment = null;
+    try {
+      equipment = await EquipmentModel.findById(req.params.id);
+    } catch (err) {
+      return next(err);
+    }
+    if (!equipment) {
+      return res.status(404).end("Equipment not found");
+    } else {
+      req.equipment = equipment;
+      next();
+    }
+  })
+  .get(async (req, res) => {
+    return res.json(req.equipment);
+  })
+  .patch(async (req, res, next) => {
+    try {
+      const equipment = await EquipmentModel.findOneAndUpdate(
+        { _id: req.params.id },
+        req.body,
+        { new: true }
+      );
+      return res.json(equipment);
+    } catch (err) {
+      return next(err);
+    }
+  })
+  .delete(async (req, res, next) => {
+    try {
+      const deletedEquipment = await EquipmentModel.findOneAndDelete({
+        _id: req.params.id,
+      });
+      return res.json(deletedEquipment);
+    } catch (err) {
+      return next(err);
+    }
+  });
+
+module.exports = router;
